@@ -1,24 +1,19 @@
-function buttOn(){
-    let state = 'toggle';
-    let topic = "woonkamer/schemerlamp";
+document.getElementById('toggle').onclick = (e) =>  {
+    const state = 'toggle';
+    const button_topic = document.getElementById('toggle');
+    const topic = button_topic.value;
 
-    fetch('http://192.168.0.100:8000/api/set', {
+    payload = {
+        'topic': topic,
+        'feature': {'state': state } };
+    const options = {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({
-            'topic': topic,
-            'feature': {'state': state } 
-        })
-    })
+        body: JSON.stringify( payload )
+    };
+    
+    fetch('http://192.168.0.100:8000/api/set', options)
+};
 
-    .then(res => res.json())
-    .then(data => console.log(data))
-
-    document.querySelector('#toggle').onclick = (e) =>  {
-        const state = 'toggle';
-        const button_topic = document.querySelector('#toggle');
-        const topic = button_topic.value;
-    }
-}
