@@ -18,7 +18,7 @@ document.getElementById('toggle').onclick = (e) =>  {
 };
 
 document.getElementById('color').onclick = (e) =>  {
-    // const state = 'toggle';
+    const state = 'toggle';
     const button_topic = document.getElementById('color');
     const topic = button_topic.value;
 
