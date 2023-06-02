@@ -17,8 +17,8 @@ document.getElementById('toggle').onclick = (e) =>  {
     fetch('http://192.168.0.100:8000/api/set', options)
 };
 
-document.getElementById('color-slider').onclick = (e) =>  {
-    let color = document.getElementById('color-slider').value;
+document.querySelector('#color').onclick = (e) =>  {
+    let color = document.getElementById("color-sliderf").value;
     const state = 'toggle';
     const button_topic = document.querySelector('#color');
     const topic = button_topic.value;
