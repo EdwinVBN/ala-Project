@@ -1,3 +1,49 @@
+class Device {
+    constructor(data) {
+        this.name = data.friendly_name;
+    }
+
+    makeHtml(){
+        const devicesTemplate = document.getElementById('dev-template');
+        const devicesSection = devicesTemplate.content.cloneNode(true);
+
+        const devName = devicesSection.querySelector("h1 #name");
+        devName.innerHTML = this.name;
+
+        return devicesSection;
+    }    
+    
+}
+
+class DeviceList {
+    constructor() {
+        this.devices = [];
+
+        fetch("js\device.json")
+            .then((res) => res.json())
+            .then((items) => this.parse(items));
+    }
+
+    parse(items){
+        for(let item of items){
+
+            const device = new Device(item);
+            this.devices.push(device);
+        }
+
+        this.show();
+    }
+
+    show(){
+        const container = document.getElementById("devices");
+        container.innerHTML = "";
+
+
+    }
+}
+
+new DeviceList();
+
 document.getElementById('toggle').onclick = (e) =>  {
     const state = 'toggle';
     const button_topic = document.getElementById('toggle');
