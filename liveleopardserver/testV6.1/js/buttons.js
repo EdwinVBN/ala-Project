@@ -19,9 +19,8 @@ class DeviceList {
     constructor() {
         this.devices = [];
 
-        fetch("js/device.json")
-            .then((res) => res.json())
-            .then((items) => this.parse(items));
+        fetch('http://192.168.0.100:8000/api/set')
+            .then((res) => res.json());
     }
 
     parse(items){
