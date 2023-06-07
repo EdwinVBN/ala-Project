@@ -19,7 +19,7 @@ class DeviceList {
     constructor() {
         this.devices = [];
 
-        fetch("js\device.json")
+        fetch("js/device.json")
             .then((res) => res.json())
             .then((items) => this.parse(items));
     }
@@ -64,7 +64,7 @@ document.getElementById('toggle').onclick = (e) =>  {
 };
 
 document.querySelector('#color').onclick = (e) =>  {
-    let color = document.getElementById("color-sliderf").value;
+    let color = document.getElementById("color-slider").value;
     const state = 'toggle';
     const button_topic = document.querySelector('#color');
     const topic = button_topic.value;
