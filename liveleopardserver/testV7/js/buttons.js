@@ -19,7 +19,7 @@ class DeviceList {
     constructor() {
         this.devices = [];
 
-        fetch("js\device.json")
+        fetch("js/device.json")
             .then((res) => res.json())
             .then((items) => this.parse(items));
     }
@@ -38,6 +38,9 @@ class DeviceList {
         const container = document.getElementById("devices");
         container.innerHTML = "";
 
+        for(let device of this.devices){   
+        container.innerHTML += `${device.name} <br>`;
+        }
 
     }
 }
