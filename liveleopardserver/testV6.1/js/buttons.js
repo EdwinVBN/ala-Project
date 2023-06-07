@@ -20,8 +20,7 @@ class DeviceList {
         this.devices = [];
 
         fetch('http://192.168.0.100:8000/api/set')
-            .then((res) => res.json());
-    }
+    };
 
     parse(items){
         for(let item of items){
