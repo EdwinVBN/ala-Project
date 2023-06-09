@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/event_stream.js" defer></script>
+    <script src="js/buttons.js" defer></script>
+</head>
+<body>
+    <header>
+
+    </header>
+    <main>
+        <textarea id="message-history" cols="140" rows="20"></textarea>
+        <!-- this hard coded device is created as an example.
+                DO NOT hard code devices! -->
+        <br><br><button id="toggle" value="woonkamer/schemerlamp">toggle</button>
+        <br><br><button id="color" value="woonkamer/schemerlamp">color</button>
+        <br><br><input type="color" id="color-slider">
+        <div id="app">
+        </div>
+        <section id="card">
+
+        </section>
+        <template id="cardTemp">
+            <span class="DevTitel"></span>
+        </template>
+    </main>
+    <footer>
+
+    </footer>
+</body>
+</html>
+
