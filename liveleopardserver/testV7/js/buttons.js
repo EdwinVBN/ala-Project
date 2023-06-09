@@ -39,9 +39,6 @@ class DeviceList {
         const container = document.getElementById("devices");
         container.innerHTML = "";
 
-        for(let device of this.devices){   
-        container.innerHTML += `${device.name} <br>`;
-        }
 
     }
 };
