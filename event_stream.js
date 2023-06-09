@@ -1,4 +1,4 @@
-const host = window.location.href; //data source, you might want to change this to 192.168.0.100
+const host = "http://192.168.0.100:8000/"; //data source, you might want to change this to 192.168.0.100
 
 let evtSource;
 let reconnectFrequency = 1 // in seconds;
