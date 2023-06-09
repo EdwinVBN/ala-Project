@@ -1,7 +1,7 @@
 const host = 'http://192.168.0.100:8000/'; //data source, you might want to change this to 192.168.0.100
 
 let evtSource;
-let reconnectFrequency = 1 // in seconds;
+// let reconnectFrequency = 1 // in seconds;
 
 
 /** 
@@ -41,6 +41,18 @@ function setupEventSource() {
     evtSource = new EventSource(host+"stream"); 
 
     evtSource.onmessage = (e) => {
+
+      function showName(deviceData){
+        console.log(deviceData.friendly_name);
+
+        const container = document.getElementById('card');
+        const template = document.getElementById('cardTemp');
+        const cardArticle = template.content.cloneNode(true);
+
+        cardArticle.querySelector('.DevTitel').innerHTML = deviceData.friendly_name;
+        container.appendChild(cardArticle);
+    }      
+
         /**
          * 'e' contains the message which is reverted to a js object
          * within the message there is a 'topic' which is 'the device'
@@ -64,10 +76,12 @@ function setupEventSource() {
         const msgPayload = message.payload;
         console.log('@onmessage')
       
+
         if (msgTopic == 'devices') {
           // received info on all devices on the network, handle with care
           // just logging here
           console.log(msgPayload);
+          msgPayload.forEach(showName);
         } else {
           // received device update, handle with care
           // just loggin here

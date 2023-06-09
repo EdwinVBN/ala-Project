@@ -1,49 +1,23 @@
-class Device {
-    constructor(data) {
-        this.name = data.friendly_name;
-    }
+const message = JSON.parse(e.data)
+const msgTopic = message.topic;
+const msgPayload = message.payload;
+console.log('@onmessage')
 
-    makeHtml(){
-        const devicesTemplate = document.getElementById('dev-template');
-        const devicesSection = devicesTemplate.content.cloneNode(true);
-
-        const devName = devicesSection.querySelector("h1 #name");
-        devName.innerHTML = this.name;
-
-        return devicesSection;
-    }    
-    
+function showName(){
+    console.log('new dev');
 }
 
-class DeviceList {
-    constructor() {
-        this.devices = [];
+if (msgTopic == 'devices') {
+  // received info on all devices on the network, handle with care
+  // just logging here
+  msgPayload.forEach(showName());
+  console.log(msgPayload);
+} else {
+  // received device update, handle with care
+  // just loggin here
+  console.log(msgTopic.devices)
+}
 
-        fetch("http://192.168.0.100:8000/api/set")
-            .then((res) => res.json())
-            .then((items) => this.parse(items));
-    
-
-    }
-    parse(items){
-        for(let item of items){
-
-            const device = new Device(item);
-            this.devices.push(device);
-        }
-
-        this.show();
-    }
-
-    show(){
-        const container = document.getElementById("devices");
-        container.innerHTML = "";
-
-
-    }
-};
-
-new DeviceList();
 
 document.getElementById('toggle').onclick = (e) =>  {
     const state = 'toggle';
@@ -65,7 +39,7 @@ document.getElementById('toggle').onclick = (e) =>  {
 };
 
 document.querySelector('#color').onclick = (e) =>  {
-    let color = document.getElementById("color-sliderf").value;
+    let color = document.getElementById("color-slider").value;
     const state = 'toggle';
     const button_topic = document.querySelector('#color');
     const topic = button_topic.value;
@@ -85,3 +59,32 @@ document.querySelector('#color').onclick = (e) =>  {
     fetch('http://192.168.0.100:8000/api/set', options)
 };
 
+// document.querySelector('#color').onclick = (e) =>  {
+//     // let color = document.getElementById("color-slider").value;
+//     // const state = 'toggle';
+//     const button_topic = document.querySelector('#color');
+//     const topic = button_topic.value;
+    
+//     function disco(kleur) {
+//         const kleur = ['#8237e2', '#f3cc08', '#f00c63', '#c33587'];
+//         const randomKleur = kleur[Math.floor(Math.random() * kleur.length)];
+//     }
+
+//     for (let i = 0; i < kleur.length; i++) {
+//         disco(kleur) = kleur[i]; 
+//     }
+
+//     payload = {
+//         'topic': topic,
+//         'feature': {"color":{"hex":`${randomKleur}`}}
+//     }
+//     const options = {
+//         method: 'POST',
+//         headers: {
+//             'Content-Type': 'application/json'
+//         },
+//         body: JSON.stringify( payload )
+//     };
+    
+//     fetch('http://192.168.0.100:8000/api/set', options)
+// };
