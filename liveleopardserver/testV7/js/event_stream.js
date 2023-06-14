@@ -21,17 +21,17 @@ function showName(deviceData) {
   console.log(deviceData.friendly_name);
 
   const container = document.getElementById('card');
-  const existingCards = container.querySelectorAll('.DevTitel');
+  const existingTitel = container.querySelectorAll('.DevTitel');
   const existingButtons = container.querySelectorAll('.knop');
   let alreadyExists = false;
 
-  existingCards.forEach((card) => {
+  existingTitel.forEach((card) => {
     if (card.innerHTML === deviceData.friendly_name) {
       alreadyExists = true;
     }
   });
 
-  existingCards.forEach((card) => {
+  existingButtons.forEach((card) => {
     if (card.innerHTML === deviceData.friendly_name) {
       alreadyExists = true;
     }
