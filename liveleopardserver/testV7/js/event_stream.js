@@ -16,6 +16,10 @@ let reconnectToStream = function() {
   setTimeout(tryToSetupStream, reconnectFrequency * 1000);
 };
 
+class Card{
+  
+}
+
 function showName(deviceData) {
   console.log(deviceData.friendly_name);
 
