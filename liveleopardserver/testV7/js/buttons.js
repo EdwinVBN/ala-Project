@@ -1,4 +1,4 @@
-const message = JSON.parse(e.data)
+/*const message = JSON.parse(e.data)
 const msgTopic = message.topic;
 const msgPayload = message.payload;
 console.log('@onmessage')
@@ -16,7 +16,7 @@ if (msgTopic == 'devices') {
   // received device update, handle with care
   // just loggin here
   console.log(msgTopic.devices)
-}
+} */
 
 
 document.getElementById('toggle').onclick = (e) =>  {
