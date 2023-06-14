@@ -1,0 +1,44 @@
+@media only screen and (max-width: 430px) {
+    *{
+        margin: 0;
+        padding: 0;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+        background: radial-gradient(#5E87E6, #2F4473);
+        display: flex;
+        min-height: 100vh;
+        flex-direction: column
+    }
+
+    .headerTitle{
+        color: white;
+        padding: 4px;
+        font-size: 35px;
+    }
+
+    .footerImage{
+    }
+
+    .footerTitle{
+        color: white;
+        padding: 4px;
+        text-align: center;
+        font-size: 25px;
+    }
+
+    footer{
+        margin-top: auto;
+        background-color: #01184C;
+    }
+
+    header{
+        background-color: #01184C;
+    }
+
+    #article1{
+        width: 100px;
+        height: 100px;
+    }
+  }
