@@ -16,15 +16,13 @@ let reconnectToStream = function() {
   setTimeout(tryToSetupStream, reconnectFrequency * 1000);
 };
 
-class Card{
-  
-}
 
 function showName(deviceData) {
   console.log(deviceData.friendly_name);
 
   const container = document.getElementById('card');
   const existingCards = container.querySelectorAll('.DevTitel');
+  const existingButtons = container.querySelectorAll('.knop');
   let alreadyExists = false;
 
   existingCards.forEach((card) => {
@@ -32,6 +30,13 @@ function showName(deviceData) {
       alreadyExists = true;
     }
   });
+
+  existingCards.forEach((card) => {
+    if (card.innerHTML === deviceData.friendly_name) {
+      alreadyExists = true;
+    }
+  });
+
 
   if (!alreadyExists) {
     const template = document.getElementById('cardTemp');
