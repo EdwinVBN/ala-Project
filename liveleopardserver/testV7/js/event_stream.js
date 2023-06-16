@@ -15,7 +15,7 @@ let tryToSetupStream = function() {
 let reconnectToStream = function() {
   setTimeout(tryToSetupStream, reconnectFrequency * 1000);
 };
-
+/*
 function showName(deviceData) {
   console.log(deviceData.friendly_name);
 
@@ -36,7 +36,7 @@ function showName(deviceData) {
     cardArticle.querySelector('.DevTitel').innerHTML = deviceData.friendly_name;
     container.appendChild(cardArticle);
   }
-}
+} */
 
 function setupEventSource() {
   evtSource = new EventSource(host + 'stream');
@@ -46,7 +46,7 @@ function setupEventSource() {
     const msgTopic = message.topic;
     const msgPayload = message.payload;
     console.log('@onmessage');
-
+    /*
     if (!initialShowNameCalled || msgTopic === 'devices') {
       console.log(msgPayload);
       msgPayload.forEach(showName);
@@ -58,7 +58,7 @@ function setupEventSource() {
     let textarea = document.querySelector('#message-history');
     textarea.value += msgTopic + ': ' + JSON.stringify(msgPayload) + '\n';
     textarea.scrollTop = 99999;
-  };
+  }; */
 
   evtSource.onopen = function(e) {
     console.log('connected to stream');
@@ -71,6 +71,7 @@ function setupEventSource() {
     reconnectToStream();
   };
 }
+};
 
 /* let's go! */
 tryToSetupStream();

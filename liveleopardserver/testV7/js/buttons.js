@@ -16,7 +16,7 @@ document.getElementById('buttonOn').onclick = (e) =>  {
     
     fetch('http://192.168.0.100:8000/api/set', options)
 };
-
+/*
 document.querySelector('#buttonOff').onclick = (e) =>  {
     let color = document.getElementById("color-slider").value;
     const state = 'toggle';
@@ -36,4 +36,4 @@ document.querySelector('#buttonOff').onclick = (e) =>  {
     };
     
     fetch('http://192.168.0.100:8000/api/set', options)
-};
+}; */
