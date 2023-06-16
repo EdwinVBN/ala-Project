@@ -41,12 +41,23 @@ function showName(deviceData) {
   if (!alreadyExists) {
     const template = document.getElementById('template');
     const cardArticle = document.importNode(template.content, true);
-
     cardArticle.querySelector('.card-title').innerHTML = deviceData.friendly_name;
     cardArticle.querySelectorAll('.card .buttons').forEach((button) => {
       button.value = deviceData.friendly_name;
+      button.name = deviceData.friendly_name;
     });
     container.appendChild(cardArticle);
+    console.log(document.querySelector('.card-body'))
+    if(deviceData.friendly_name == "woonkamer/schemerlamp"){
+      console.log()
+      const div = document.querySelector('[name="woonkamer/schemerlamp"]').parentElement;
+      const button = document.createElement('input');
+      button.classList.add('color-button-schemerlamp')
+      button.setAttribute('type', 'color')
+      console.log(button.value)
+
+      div.appendChild(button);
+    }
   }
 }
 
@@ -66,7 +77,7 @@ function setupEventSource() {
 
       const button = document.querySelectorAll('.card .btn.btn-primary.buttons');
       console.log(button);
-      
+
       button.forEach((button) => {
         button.onclick = (e) => {
           const state = 'toggle';
@@ -93,6 +104,7 @@ function setupEventSource() {
     } else {
       console.log('msgTopic = ' + msgTopic);
     }
+    console.log(document.querySelector('.color-button-schemerlamp').value)
 
     // let textarea = document.querySelector('#message-history');
     // textarea.value += msgTopic + ': ' + JSON.stringify(msgPayload) + '\n';
@@ -110,7 +122,6 @@ function setupEventSource() {
     reconnectToStream();
   };
 }
-
 
 /* let's go! */
 tryToSetupStream();
