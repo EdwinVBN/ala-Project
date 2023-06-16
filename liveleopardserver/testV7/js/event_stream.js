@@ -52,14 +52,73 @@ function showName(deviceData) {
       console.log()
       const div = document.querySelector('[name="woonkamer/schemerlamp"]').parentElement;
       const button = document.createElement('input');
+      const br = document.createElement('br');
       button.classList.add('color-button-schemerlamp')
       button.setAttribute('type', 'color')
       console.log(button.value)
 
+      div.appendChild(br);
+      div.appendChild(button);
+    }
+    if(deviceData.friendly_name == "woonkamer/schemerlamp"){
+      console.log()
+      const div = document.querySelector('[name="woonkamer/schemerlamp"]').parentElement;
+      const button = document.createElement('button');
+      button.classList.add('color-button-woonkamer')
+      button.setAttribute('type', 'button')
+      button.setAttribute('id', 'colorButton')
+      button.textContent = 'Color';
+      console.log(button.value)
+  
+      div.appendChild(button);
+      }
+    }
+
+    let color = document.querySelector('.color-button-schemerlamp').value;
+    payload = {
+      'topic': device,
+      'feature': {"color":{"hex":`${color}`}}
+      }
+    
+    const options = {
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/json'
+      },
+      body: JSON.stringify( payload )
+    };
+
+    fetch('http://192.168.0.100:8000/api/set', options);
+
+
+    if(deviceData.friendly_name == "keuken/licht"){
+      console.log()
+      const div = document.querySelector('[name="keuken/licht"]').parentElement;
+      const button = document.createElement('input');
+      const br = document.createElement('br');
+      button.classList.add('color-button-keukenLicht')
+      button.setAttribute('type', 'color')
+      console.log(button.value)
+  
+      div.appendChild(br);
+      div.appendChild(button);
+    }
+    if(deviceData.friendly_name == "keuken/licht"){
+      console.log()
+      const div = document.querySelector('[name="keuken/licht"]').parentElement;
+      const button = document.createElement('button');
+      button.classList.add('color-button-keuken')
+      button.setAttribute('type', 'button')
+      button.setAttribute('id', 'colorButton')
+      button.textContent = 'Color';
+      console.log(button.value)
+  
       div.appendChild(button);
     }
   }
-}
+  
+
+
 
 function setupEventSource() {
   evtSource = new EventSource(host + 'stream');
@@ -99,6 +158,29 @@ function setupEventSource() {
   
       fetch('http://192.168.0.100:8000/api/set', options);
     };
+
+    document.getElementById('colorButton').onclick = (e) =>  {
+      let color = document.querySelector('.color-button-schemerlamp').value;
+      const state = 'toggle';
+      const button_topic = document.querySelector('.color-button-schemerlamp');
+      const topic = button_topic.value;
+      
+      console.log(topic, color);
+      payload = {
+          'topic': topic,
+          'feature': {"color":{"hex":`${color}`}}
+      }
+      const options = {
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json'
+          },
+          body: JSON.stringify( payload )
+      };
+      
+      fetch('http://192.168.0.100:8000/api/set', options)
+  };
+
   });
   
     } else {
