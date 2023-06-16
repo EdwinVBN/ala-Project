@@ -17,10 +17,10 @@ document.getElementById('buttonOn').onclick = (e) =>  {
     fetch('http://192.168.0.100:8000/api/set', options)
 };
 
-document.querySelector('#color').onclick = (e) =>  {
+document.querySelector('#buttonOff').onclick = (e) =>  {
     let color = document.getElementById("color-slider").value;
     const state = 'toggle';
-    const button_topic = document.querySelector('#color');
+    const button_topic = document.querySelector('#buttonOff');
     const topic = button_topic.value;
 
     payload = {
