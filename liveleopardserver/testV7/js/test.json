@@ -1,0 +1,8 @@
+[
+    {"name":"lamp_kleur","brightness":100,"color":{"x":0.7006,"y":0.2993},"color_mode":"xy","color_temp":160,"linkquality":255,"state":"OFF","update":{"installed_version":587806257,"latest_version":587806257,"state":"idle"}},
+    {"name":"klimaat_woonkamer","battery":83,"humidity":55.55,"linkquality":255,"power_outage_count":8696,"pressure":1021.7,"temperature":21.2,"voltage":2975},
+    {"name":"slimme_stekker","linkquality":244,"state":"OFF","update":{"installed_version":587765297,"latest_version":587765297,"state":"idle"}},
+    {"name":"smart_plug_met_verbruik","current":0,"energy":6.77,"linkquality":252,"power":0,"state":"OFF","temperature":19,"voltage":231.9},
+    {"name":"0xbc33acfffe870f53","battery":100,"illuminance_above_threshold":false,"linkquality":244,"occupancy":true,"update":{"installed_version":537011747,"latest_version":537011747,"state":"idle"}},
+    {"name":"0x000b57fffec5b893","brightness":104,"color_mode":"color_temp","color_temp":383,"state":"ON","update":{"installed_version":587757105,"latest_version":587757105,"state":"idle"}}
+]
