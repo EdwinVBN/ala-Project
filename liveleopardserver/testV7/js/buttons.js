@@ -1,3 +1,6 @@
+
+
+document.querySelector('#color').onclick = (e) =>  {
 document.getElementById('buttonOn').onclick = (e) =>  {
     const state = 'toggle';
     const button_topic = document.getElementById('buttonOn');
