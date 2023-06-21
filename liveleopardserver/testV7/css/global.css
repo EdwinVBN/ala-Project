@@ -15,7 +15,7 @@
     display: grid;
     grid-column-start: 2;
     grid-row-start: 1;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(4, 1fr)
 } */
 
 #container{

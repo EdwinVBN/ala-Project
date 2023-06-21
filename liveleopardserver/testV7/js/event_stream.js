@@ -140,5 +140,4 @@ function setupEventSource() {
   };
 }
 
-/* let's go! */
 tryToSetupStream();
