@@ -24,6 +24,7 @@ function showName(deviceData) {
   const existingButtons = container.querySelectorAll('.buttons');
   let alreadyExists = false;
 
+
   existingTitel.forEach((cardTitle) => {
     if (cardTitle.innerHTML === deviceData.friendly_name) {
       alreadyExists = true;
@@ -71,6 +72,11 @@ function showName(deviceData) {
 
     container.appendChild(cardArticle);
 
+    if(deviceData.friendly_name === "Coordinator"){
+      const coordinator = document.querySelector('[name="Coordinator"]').parentElement;
+      coordinator.style.display = 'none';
+    }
+  
     if (deviceData.friendly_name === 'woonkamer/schemerlamp') {
       const div = document.querySelector('[name="woonkamer/schemerlamp"]').parentElement;
       const button = document.createElement('input');
@@ -100,38 +106,9 @@ function showName(deviceData) {
         fetch('http://192.168.0.100:8000/api/set', options);
       };
     }
-
-    if (deviceData.friendly_name === 'keuken/licht') {
-      const div = document.querySelector('[name="keuken/licht"]').parentElement;
-      const button = document.createElement('input');
-      const br = document.createElement('br');
-
-      button.classList.add('color-button-keukenLicht');
-      button.setAttribute('type', 'color');
-
-      div.appendChild(br);
-      div.appendChild(button);
-
-      button.onchange = (e) => {
-        let color = button.value;
-        payload = {
-          'topic': deviceData.friendly_name,
-          'feature': { 'color': { 'hex': color } }
-        };
-
-        const options = {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(payload)
-        };
-
-        fetch('http://192.168.0.100:8000/api/set', options);
-      };
     }
   }
-}
+
 
 function setupEventSource() {
   evtSource = new EventSource(host + 'stream');
